@@ -1,3 +1,7 @@
+html {
+  background-image: '/assets/images/group.jpg'
+}
+
 .scene {
   background-color: red
 }

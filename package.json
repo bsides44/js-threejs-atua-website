@@ -64,6 +64,8 @@
     "redux-thunk": "^2.2.0",
     "superagent": "^2.2.0",
     "three": "^0.86.0",
+    "three-collada-loader": "0.0.1",
+    "three-trackballcontrols": "^0.0.7",
     "webpack": "^2.3.3",
     "webpack-dev-server": "^2.4.2"
   }

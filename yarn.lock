@@ -6682,6 +6682,14 @@ test-exclude@^4.2.1:
     read-pkg-up "^1.0.1"
     require-main-filename "^1.0.1"
 
+three-collada-loader@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/three-collada-loader/-/three-collada-loader-0.0.1.tgz#47c3885464d74916074d91a0b69e9c660c3c219b"
+
+three-trackballcontrols@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/three-trackballcontrols/-/three-trackballcontrols-0.0.7.tgz#42cae1f6856d5f889eaae3a0e2fca9d214793e91"
+
 three@^0.86.0:
   version "0.86.0"
   resolved "https://registry.yarnpkg.com/three/-/three-0.86.0.tgz#1c33e476a1537e9a8a18f5792d024b1046cd2000"
