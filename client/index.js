@@ -32,7 +32,6 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 
 document.body.appendChild( renderer.domElement );
 
-
 /////////////////////////////////////////
 // Trackball Controller
 /////////////////////////////////////////
@@ -45,7 +44,6 @@ controls.noZoom = false;
 controls.noPan = true;
 controls.staticMoving = false;
 controls.dynamicDampingFactor = 0.2;
-
 
 /////////////////////////////////////////
 // Lighting
@@ -125,7 +123,38 @@ function loadCollada( collada ) {
 loader.options.convertUpAxis = true;
 loader.load( '/assets/images/tawhiri.dae', loadCollada);
 
+// Background scene
 
+// Load the background texture
+var loader =  new THREE.TextureLoader()
+var texture = loader.load( '/assets/images/sunset.svg' );
+var backgroundMesh = new THREE.Mesh(
+    new THREE.PlaneGeometry(2, 2, 0),
+    new THREE.MeshBasicMaterial({
+        map: texture
+    }));
+
+backgroundMesh .material.depthTest = false;
+backgroundMesh .material.depthWrite = false;
+
+// Create your background scene
+var backgroundScene = new THREE.Scene();
+var backgroundCamera = new THREE.Camera();
+backgroundScene .add(backgroundCamera );
+backgroundScene .add(backgroundMesh );
+
+
+// Rendering function
+var go = function () {
+    requestAnimationFrame(go);
+
+    renderer.autoClear = false;
+    renderer.clear();
+    renderer.render(backgroundScene , backgroundCamera );
+    renderer.render(scene, camera);
+};
+
+go();
 
 // var color = 0x000000;
 

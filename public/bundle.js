@@ -50376,7 +50376,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 // import store from './store'
 {/* <script src = "TrackballControls.js"></script>
-  var TrackballControls = require('three-trackballcontrols'); */} // import React from 'react'
+    var TrackballControls = require('three-trackballcontrols'); */} // import React from 'react'
 // import {render} from 'react-dom'
 
 
@@ -50389,8 +50389,8 @@ camera.position.set(-5, 12, 10);
 camera.lookAt(scene.position);
 
 renderer = new THREE.WebGLRenderer({
-  alpha: true,
-  antialias: true
+    alpha: true,
+    antialias: true
 });
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -50439,7 +50439,7 @@ scene.add(light);
 /////////////////////////////////////////
 
 function renderThreeDObject() {
-  renderer.render(scene, camera);
+    renderer.render(scene, camera);
 }
 
 // Render the scene when the controls have changed.
@@ -50450,8 +50450,8 @@ controls.addEventListener('change', renderThreeDObject);
 // Avoid constantly rendering the scene by only 
 // updating the controls every requestAnimationFrame
 function animationLoop() {
-  requestAnimationFrame(animationLoop);
-  controls.update();
+    requestAnimationFrame(animationLoop);
+    controls.update();
 }
 
 animationLoop();
@@ -50461,11 +50461,11 @@ animationLoop();
 /////////////////////////////////////////
 
 window.addEventListener('resize', function () {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  controls.handleResize();
-  renderThreeDObject();
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    controls.handleResize();
+    renderThreeDObject();
 }, false);
 
 /////////////////////////////////////////
@@ -50476,14 +50476,44 @@ var tawhiri,
     loader = new _threeColladaLoader2.default();
 
 function loadCollada(collada) {
-  tawhiri = collada.scene;
-  tawhiri.position.set(0.4, 0, 0.8);
-  scene.add(tawhiri);
-  renderThreeDObject();
+    tawhiri = collada.scene;
+    tawhiri.position.set(0.4, 0, 0.8);
+    scene.add(tawhiri);
+    renderThreeDObject();
 }
 
 loader.options.convertUpAxis = true;
 loader.load('/assets/images/tawhiri.dae', loadCollada);
+
+// Background scene
+
+// Load the background texture
+var loader = new THREE.TextureLoader();
+var texture = loader.load('/assets/images/sunset.svg');
+var backgroundMesh = new THREE.Mesh(new THREE.PlaneGeometry(2, 2, 0), new THREE.MeshBasicMaterial({
+    map: texture
+}));
+
+backgroundMesh.material.depthTest = false;
+backgroundMesh.material.depthWrite = false;
+
+// Create your background scene
+var backgroundScene = new THREE.Scene();
+var backgroundCamera = new THREE.Camera();
+backgroundScene.add(backgroundCamera);
+backgroundScene.add(backgroundMesh);
+
+// Rendering function
+var go = function go() {
+    requestAnimationFrame(go);
+
+    renderer.autoClear = false;
+    renderer.clear();
+    renderer.render(backgroundScene, backgroundCamera);
+    renderer.render(scene, camera);
+};
+
+go();
 
 // var color = 0x000000;
 
