@@ -465,6 +465,7 @@ Animations
 }
 
 .about-page-row {
+  background-image: url("/assets/images/daytime.svg");
   background-size: cover;
   overflow: hidden;
 }
