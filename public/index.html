@@ -8,8 +8,47 @@
    <link rel="stylesheet" href="styles/main.css" type="text/css">
 </head>
 <body>
-  <div id="app"></div>
+  <div class='home'>
+    <div id="app"></div>
+    <div class='open fade-in'>
+        <a class="toggle" href="#example">?</a>
+    </div>    
+    <div class="toggle-content" id="example">
+      <div class="navbar" id="myNavbar" >
+      <a href="#example" class='toggle' id='close'>&times;</a>
+        <ul id='navItems'>
+          <li><a href="">He aha tenei?</a></li>
+          <li><a href="">Tāwhirimatea</a></li>
+          <li><a href="">Our kaupapa</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
   <script src="bundle.js"></script>
 </body>
 </html>
 
+<!-- <div style={divStyle} className='home'>
+  {/* container has to be at the top, else you can't hover over anything else.
+   not sure why, it's a good bug to fix later. */}
+    <div className='container'>
+    {/* {!props.current_text.name && <Atua />} */}
+    {!props.current_text.name}
+    </div>
+    <div className='head-banner fade-in'>
+    <CSSTransitionGroup transitionName='nav' transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+      {!props.current_text.name && <WindInfo />}
+      </CSSTransitionGroup>
+    </div>
+    <CSSTransitionGroup transitionName='nav' transitionEnterTimeout={600} transitionLeaveTimeout={300}>
+    {props.current_text.name && <Text text={props.current_text} index={props.current_index} dispatch={props.dispatch}/>}
+  </CSSTransitionGroup>
+    <div className='open fade-in' onClick={() => props.dispatch(openNav())}>﹖</div>
+      <CSSTransitionGroup transitionName='nav' transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+        {props.menuVisible &&
+  <div className="navbar" id="myNavbar" >
+    <Nav closeNav={() => props.dispatch(closeNav())}/>
+  </div>
+  }
+      </CSSTransitionGroup>
+  </div> -->

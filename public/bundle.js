@@ -50370,16 +50370,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-// import {Provider} from 'react-redux'
-
-// import App from './components/App'
-
-// import store from './store'
-{/* <script src = "TrackballControls.js"></script>
-    var TrackballControls = require('three-trackballcontrols'); */} // import React from 'react'
-// import {render} from 'react-dom'
-
-
 var scene, camera, renderer, controls;
 
 scene = new THREE.Scene();
@@ -50414,8 +50404,8 @@ controls.dynamicDampingFactor = 0.2;
 // Lighting
 /////////////////////////////////////////
 
-var light_colour = '#FAFAFA',
-    ambientLight = new THREE.AmbientLight('#EEEEEE'),
+var light_colour = '#ad002d',
+    ambientLight = new THREE.AmbientLight('#ffb300'),
     hemiLight = new THREE.HemisphereLight(light_colour, light_colour, 0),
     light = new THREE.PointLight(light_colour, 1, 100);
 
@@ -50425,14 +50415,6 @@ light.position.set(0, 20, 10);
 scene.add(ambientLight);
 scene.add(hemiLight);
 scene.add(light);
-
-/////////////////////////////////////////
-// Utilities
-/////////////////////////////////////////
-
-// var axisHelper = new THREE.AxisHelper( 1.25 );
-// scene.add( axisHelper );
-
 
 /////////////////////////////////////////
 // Render Loop
@@ -50515,89 +50497,48 @@ var go = function go() {
 
 go();
 
-// var color = 0x000000;
+// https://webdesign.tutsplus.com/tutorials/a-noobs-guide-to-threejs--cms-28639
 
-// // Create your main scene
-// var scene = new THREE.Scene();
 
-// // Create your main camera
-// var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+//navbar
+document.getElementById("example").style.display = "none";
 
-// // Create lights
-// var light = new THREE.PointLight(0xEEEEEE);
-// light.position.set(20, 0, 20);
-// scene.add(light);
+var show = function show(elem) {
+    elem.style.display = 'block';
+};
 
-// var lightAmb = new THREE.AmbientLight(0x777777);
-// scene.add(lightAmb);
+var hide = function hide(elem) {
+    elem.style.display = 'none';
+};
 
-// // Create your renderer
-// var renderer = new THREE.WebGLRenderer();
-// renderer.setSize(window.innerWidth, window.innerHeight);
-// document.body.appendChild(renderer.domElement);
+var toggle = function toggle(elem) {
 
-// // Create a cube
-// var geometry = new THREE.BoxGeometry(1, 1, 1);
-// var material = new THREE.MeshLambertMaterial({
-//     color: 0xff00ff,
-//     ambient: 0x121212,
-//     emissive: 0x121212
-//  });
+    // If the element is visible, hide it
+    if (window.getComputedStyle(elem).display === 'block') {
+        hide(elem);
+        return;
+    }
 
-// var cube = new THREE.Mesh(geometry, material);
-// scene.add(cube);
+    // Otherwise, show it
+    show(elem);
+};
 
-// // Set up the main camera
-// camera.position.z = 5;
+// Listen for click events
+document.addEventListener('click', function (event) {
 
-// // Load the background texture
-// var loader =  new THREE.TextureLoader()
-// var texture = loader.load( '/assets/images/group.jpg' );
-// var backgroundMesh = new THREE.Mesh(
-//     new THREE.PlaneGeometry(2, 2, 0),
-//     new THREE.MeshBasicMaterial({
-//         map: texture
-//     }));
+    // Make sure clicked element is our toggle
+    if (!event.target.classList.contains('toggle')) return;
 
-// backgroundMesh .material.depthTest = false;
-// backgroundMesh .material.depthWrite = false;
+    // Prevent default link behavior
+    event.preventDefault();
 
-// // Create your background scene
-// var backgroundScene = new THREE.Scene();
-// var backgroundCamera = new THREE.Camera();
-// backgroundScene .add(backgroundCamera );
-// backgroundScene .add(backgroundMesh );
+    // Get the content
+    var content = document.querySelector(event.target.hash);
+    if (!content) return;
 
-// // Rendering function
-// var go = function () {
-//     requestAnimationFrame(go);
-
-//     // Update the color to set
-//     if (color < 0xdddddd) color += 0x0000ff;
-
-//     // Update the cube color
-//     cube.material.color.setHex(color);
-
-//     // Update the cube rotations
-//     cube.rotation.x += 0.05;
-//     cube.rotation.y += 0.02;
-
-//     renderer.autoClear = false;
-//     renderer.clear();
-//     renderer.render(backgroundScene , backgroundCamera );
-//     renderer.render(scene, camera);
-// };
-
-// go();
-
-// // document.addEventListener('DOMContentLoaded', () => {
-// //   render(
-// //     <Provider store={store}>
-// //       <App />
-// //     </Provider>,
-// //     document.getElementById('app')
-// //   )
-// // })
+    // Toggle the content
+    toggle(content);
+}, false);
 
 /***/ })
 /******/ ]);

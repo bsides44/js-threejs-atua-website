@@ -1,7 +1,3 @@
-html {
-  background-image: '/assets/images/group.jpg'
-}
-
 .scene {
   background-color: red
 }
@@ -214,7 +210,7 @@ cursor: pointer;
   position: relative;
   text-align: center;
 }
-.navbar .close {
+.navbar #close {
   width:100%;
   right: 1em;
   text-align: right;
