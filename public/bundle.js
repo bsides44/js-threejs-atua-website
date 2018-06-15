@@ -50465,7 +50465,7 @@ function loadCollada(collada) {
 }
 
 loader.options.convertUpAxis = true;
-loader.load('/assets/images/lessorange.dae', loadCollada);
+loader.load('/assets/images/lessorange2.dae', loadCollada);
 
 // Background scene
 
