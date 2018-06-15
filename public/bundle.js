@@ -50404,8 +50404,8 @@ controls.dynamicDampingFactor = 0.2;
 // Lighting
 /////////////////////////////////////////
 
-var light_colour = '#ad002d',
-    ambientLight = new THREE.AmbientLight('#ffb300'),
+var light_colour = '#ffe268',
+    ambientLight = new THREE.AmbientLight('#ffe268'),
     hemiLight = new THREE.HemisphereLight(light_colour, light_colour, 0),
     light = new THREE.PointLight(light_colour, 1, 100);
 
@@ -50465,13 +50465,13 @@ function loadCollada(collada) {
 }
 
 loader.options.convertUpAxis = true;
-loader.load('/assets/images/tawhiri.dae', loadCollada);
+loader.load('/assets/images/lessorange.dae', loadCollada);
 
 // Background scene
 
 // Load the background texture
 var loader = new THREE.TextureLoader();
-var texture = loader.load('/assets/images/sunset.svg');
+var texture = loader.load('/assets/images/nonresponsive2.svg');
 var backgroundMesh = new THREE.Mesh(new THREE.PlaneGeometry(2, 2, 0), new THREE.MeshBasicMaterial({
     map: texture
 }));
