@@ -1,10 +1,12 @@
 # js-threejs-atua-website
 
-An initial experiment to put a 3D model of Tāwhirimātea into our Atua-ar.herokuapp.com website.
+Putting a 3D model of Tāwhirimātea into our Atua-ar.herokuapp.com website.
 
 We built an augmented reality application of Tāwhirimātea using Mapbox, Unity and ARKit for iOS. We built the atua-ar website to explain the concept. But it just doesn't demonstrate it well enough with a 2D version of Tāwhirimātea. So why not use three.js to import the same 3D model we used in the AR app, into the website.
 
 I needed im import the .fbx and export it with colours as a .dae file from Blender. The import the model into three.js using Collada Loader. 
+
+You need to set the scene with a camera and lighting, then render the object and background. The 3D object is now rotateable with the mouse, so you can see every side of it.
 
 Getting the background .svg in there was tricky. Backgrounds are just pictures that are expected to repeat. Their proportions need to be divisible by 2. You load the .svg as a texture and then paint the mesh over the terrain.
 
